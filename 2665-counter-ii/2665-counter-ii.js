@@ -2,22 +2,19 @@
  * @param {integer} init
  * @return { increment: Function, decrement: Function, reset: Function }
  */
-var createCounter = function(init) {
+var createCounter = function (init) {
     let currentCount = init;
-    
-   function increment(){
-       return ++currentCount;
-   }
-    
-    function decrement(){
-       return --currentCount;
-   }
-    
-    function reset(){
-       return (currentCount = init);
-   }
-    
-    return {increment, decrement, reset}
+    return {
+        increment: function () {
+            return currentCount+=1;
+        },
+        reset: function () {
+            return currentCount = init;
+        },
+        decrement: function () {
+            return currentCount-=1;
+        }
+    };
 };
 
 /**
