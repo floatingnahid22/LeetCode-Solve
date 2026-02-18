@@ -3,14 +3,12 @@
  * @return {Function}
  */
 var once = function(fn) {
-    let oneFn = 0;
+    let count = 0;
     return function(...args){
-        oneFn += 1;
-        if(oneFn === 1){
-            return fn(...args)
+        count++;
+        if(count===1) {
+            return fn(...args);
         }
-        return undefined;
-        
     }
 };
 
