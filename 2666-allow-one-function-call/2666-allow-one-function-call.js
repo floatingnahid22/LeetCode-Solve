@@ -2,13 +2,17 @@
  * @param {Function} fn
  * @return {Function}
  */
-var once = function(fn) {
-    let count = 0;
-    return function(...args){
-        count++;
-        if(count===1) {
-            return fn(...args);
+var once = function (fn) {
+    let hasCalled = false;
+    let result;
+    return function (...args) {
+        if (!hasCalled) {
+            hasCalled = true;
+            result = fn(...args);
+            fn = null;
+            return result
         }
+        return undefined;
     }
 };
 
